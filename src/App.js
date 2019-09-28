@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { Table } from './Components/Table/Table';
+import { getEarthquakeData } from './util/api';
+import { getPropertyList, getCoordinateList } from './util/helper';
+
+import 'react-table/react-table.css';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [eqData, setEqData] = useState([]);
+    const [geoData, setGeoData] = useState([]);
+
+    useEffect(() => {
+        getEarthquakeData()
+        .then(res => res.json())
+        .then(data => {
+            setEqData(getPropertyList(data.features));
+            setGeoData(getCoordinateList(data.features));
+        }).catch(function(ex) {
+            console.log('failed', ex);
+        })
+    }, []);
+
+    return(
+        <Table data={eqData} />
+    );
 }
 
 export default App;
