@@ -15,9 +15,7 @@ function App() {
 
     useEffect(() => {
         getEarthquakeData()
-        .then(res => res.json())
         .then(data => {
-            console.log(data);
             setMetaData(data.metadata);
             setEqFeatures(getPropertyList(data.features));
             setEqGeoData(getCoordinateList(data.features));

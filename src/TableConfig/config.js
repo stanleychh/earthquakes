@@ -2,19 +2,19 @@ import matchSorter from 'match-sorter';
 import { transformTimeStamp } from '../util/helper';
 
 export const columns = [{
-    Header: 'Title',
-    id: 'title',
-    accessor: d => d.title,
-    filterMethod: (filter, rows) =>
-        matchSorter(rows, filter.value, { keys: ["title"] }),
-    filterAll: true,
-    width: 300
-}, {
     Header: 'Place',
     id: 'place',
     accessor: d => d.place,
     filterMethod: (filter, rows) =>
         matchSorter(rows, filter.value, { keys: ["place"] }),
+    filterAll: true,
+    width: 300
+}, {
+    Header: 'Types',
+    id: 'types',
+    accessor: d => d.types,
+    filterMethod: (filter, rows) =>
+        matchSorter(rows, filter.value, { keys: ["types"] }),
     filterAll: true,
     width: 300
 }, {
@@ -66,7 +66,7 @@ export const columns = [{
     filterAll: true,
     width: 80
 }, {
-    Header: 'time',
+    Header: 'DATE TIME',
     id: "time",
     accessor: d => {
         return transformTimeStamp(d.time)
