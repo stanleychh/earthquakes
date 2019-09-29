@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactTable from 'react-table'
 import { columns } from '../../TableConfig/config';
 import styles from "./Table.module.css";
@@ -15,3 +16,14 @@ export const Table = ({ data }) => {
         />
     );
 };
+
+Table.propTypes = {
+    data: PropTypes.array
+};
+
+Table.defaultProps = {
+    data: []
+};
+
+Table.displayName = 'Table';
+

@@ -1,5 +1,5 @@
 import matchSorter from 'match-sorter';
-import Moment from "moment";
+import { transformTimeStamp } from '../util/helper';
 
 export const columns = [{
     Header: 'Title',
@@ -24,15 +24,15 @@ export const columns = [{
     filterMethod: (filter, rows) =>
         matchSorter(rows, filter.value, { keys: ["type"] }),
     filterAll: true,
-    width: 150
-}, {
-    Header: 'Tsunami',
-    id: 'tsunami',
-    accessor: d => d.tsunami,
-    filterMethod: (filter, rows) =>
-        matchSorter(rows, filter.value, { keys: ["tsunami"] }),
-    filterAll: true,
     width: 100
+}, {
+    Header: 'MAG',
+    id: 'mag',
+    accessor: d => d.mag,
+    filterMethod: (filter, rows) =>
+        matchSorter(rows, filter.value, { keys: ["mag"] }),
+    filterAll: true,
+    width: 80
 }, {
     Header: 'RMS',
     id: 'rms',
@@ -40,7 +40,7 @@ export const columns = [{
     filterMethod: (filter, rows) =>
         matchSorter(rows, filter.value, { keys: ["rms"] }),
     filterAll: true,
-    width: 100
+    width: 80
 }, {
     Header: 'SIG',
     id: 'sig',
@@ -48,17 +48,31 @@ export const columns = [{
     filterMethod: (filter, rows) =>
         matchSorter(rows, filter.value, { keys: ["sig"] }),
     filterAll: true,
-    width: 100
+    width: 80
+}, {
+    Header: 'GAP',
+    id: 'gap',
+    accessor: d => d.gap,
+    filterMethod: (filter, rows) =>
+        matchSorter(rows, filter.value, { keys: ["gap"] }),
+    filterAll: true,
+    width: 80
+}, {
+    Header: 'NST',
+    id: 'nst',
+    accessor: d => d.nst,
+    filterMethod: (filter, rows) =>
+        matchSorter(rows, filter.value, { keys: ["nst"] }),
+    filterAll: true,
+    width: 80
 }, {
     Header: 'time',
     id: "time",
     accessor: d => {
-        return Moment(d.time)
-            .local()
-            .format("DD-MM-YYYY hh:mm:ss a")
+        return transformTimeStamp(d.time)
     },
     filterMethod: (filter, rows) =>
         matchSorter(rows, filter.value, { keys: ["time"] }),
     filterAll: true,
-    width: 300
+    width: 200
 }];
