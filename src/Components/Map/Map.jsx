@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ReactHtmlParser from 'react-html-parser';
 import { Map as LeafletMap, TileLayer, Popup, CircleMarker } from 'react-leaflet';
-import { SCALE_MAG } from '../../common/constants';
+import { MAP_SCALE_MAG, MAP_MARKER_COLOR } from '../../common/constants';
+import { composeHyperlink } from '../../util/helper';
+
 import 'leaflet/dist/leaflet.css';
 import '../../Styles/map.css';
 
@@ -16,12 +19,16 @@ export const Map = ({ position, zoom, geoData }) => {
                 {
                     geoData && geoData.map((data) => {
                         return (
-                            <CircleMarker center={data[0].geoLocation} key={data[0].id} radius={data[0].mag*SCALE_MAG} color="#ff4242">
+                            <CircleMarker
+                                center={data[0].geoLocation}
+                                key={data[0].id}
+                                radius={data[0].mag*MAP_SCALE_MAG}
+                                color={MAP_MARKER_COLOR} >
                                 <Popup>
                                     { data[0].title } <br/>
                                     { data[0].time } <br/>
                                     Depth: { data[0].depth } <br/>
-                                    { <a href={data[0].detail} target='_blank' rel='noopener noreferrer'>More Detail</a> }
+                                    { ReactHtmlParser(composeHyperlink(data[0].detail, 'More Detail')) }
                                 </Popup>
                             </CircleMarker>
                         )

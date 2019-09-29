@@ -29,7 +29,7 @@ function App() {
     return(
         <>
             <Title title={metaData.title} subtitle={composeSubtitle(metaData.count || 0, metaData.generated)} />
-            <Map position={USA} zoom={3} geoData={eqGeoData} />
+                <Map position={USA} zoom={3} geoData={eqGeoData} />
             <Table data={eqFeatures} />
         </>
     );

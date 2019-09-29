@@ -5,6 +5,8 @@ export const transformTimeStamp = (timestamp) => Moment(timestamp).local().forma
 
 export const composeSubtitle = (count, date) => `${count} earthquakes happened until ${transformTimeStamp(date)}`;
 
+export const composeHyperlink = (link, text) => `<a href=${link} target='_blank' rel='noopener noreferrer'>${text}</a>`;
+
 export const getPropertyList = (data) => {
     let featureData = [];
     data.map((feature) => featureData.push(feature.properties));
