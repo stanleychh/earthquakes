@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactTable from 'react-table'
 import { columns } from '../../TableConfig/config';
 import styles from "./Table.module.css";
+import 'react-table/react-table.css';
 
 export const Table = ({ data }) => {
 

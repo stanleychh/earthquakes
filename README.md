@@ -38,11 +38,12 @@ To Run Test Suite:
 * PASS  src/App.test.js
 * PASS  src/Components/Table/Table.test.jsx
 * PASS  src/Components/Title/Title.test.jsx
+* PASS  src/util/helper.test.js
 
-Test Suites: 3 passed, 3 total
-Tests:       8 passed, 8 total
+Test Suites: 4 passed, 4 total
+Tests:       12 passed, 12 total
 Snapshots:   0 total
-Time:        3.593, estimated 4s
+Time:        2.956s, estimated 4s
 
 ## Dataset source
 [earthquake.usgs.gov](https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojsonp)

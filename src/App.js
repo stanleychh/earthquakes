@@ -6,7 +6,6 @@ import { getEarthquakeData } from './util/api';
 import { getPropertyList, getCoordinateList, composeSubtitle } from './util/helper';
 import { ZOOM } from './common/constants';
 import { USA } from './common/coordinates';
-import 'react-table/react-table.css';
 
 function App() {
     const [metaData, setMetaData] = useState([]);
