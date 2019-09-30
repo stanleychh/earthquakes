@@ -4,8 +4,8 @@ import { Map } from "./Components/Map";
 import { Title } from "./Components/Title";
 import { getEarthquakeData } from './util/api';
 import { getPropertyList, getCoordinateList, composeSubtitle } from './util/helper';
-
-import { USA } from "./common/coordinates";
+import { ZOOM } from './common/constants';
+import { USA } from './common/coordinates';
 import 'react-table/react-table.css';
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
     return(
         <>
             <Title title={metaData.title} subtitle={composeSubtitle(metaData.count || 0, metaData.generated)} />
-                <Map position={USA} zoom={3} geoData={eqGeoData} />
+                <Map position={USA} zoom={ZOOM} geoData={eqGeoData} />
             <Table data={eqFeatures} />
         </>
     );
