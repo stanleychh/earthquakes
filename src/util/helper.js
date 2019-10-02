@@ -5,18 +5,12 @@ export const transformTimeStamp = (timestamp) => Moment(timestamp).local().forma
 
 export const composeSubtitle = (count, date) => `${count} earthquakes happened until ${transformTimeStamp(date)}`;
 
-export const composeHyperlink = (link, text) => `<a href=${link} target='_blank' rel='noopener noreferrer'>${text}</a>`;
-
 export const getPropertyList = (data) => {
-    let featureData = [];
-    data.map((feature) => featureData.push(feature.properties));
-    return featureData;
+    return data.map((feature) => feature.properties);
 };
 
 export const getCoordinateList = (data) => {
-    let geoData = [];
-
-    data.forEach((feature) => {
+    return data.map((feature) => {
         const property = feature.properties;
         const coordinates = feature.geometry.coordinates;
         const id = feature.id;
@@ -27,8 +21,6 @@ export const getCoordinateList = (data) => {
         const geoLocation = [coordinates[1], coordinates[0]];
         const depth = coordinates[2];
 
-        geoData.push([{title, time, geoLocation, detail, mag, depth, id}]);
+        return [{title, time, geoLocation, detail, mag, depth, id}];
     });
-
-    return geoData;
 };

@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactHtmlParser from 'react-html-parser';
 import { Map as LeafletMap, TileLayer, Popup, CircleMarker } from 'react-leaflet';
 import { MAP_SCALE_MAG, MAP_MARKER_COLOR } from '../../common/constants';
-import { composeHyperlink } from '../../util/helper';
 
 import 'leaflet/dist/leaflet.css';
 import '../../Styles/map.css';
+
+export const composeHyperlink = (link, text) => {
+    return (
+        <a href={link} target='_blank' rel='noopener noreferrer'>{text}</a>
+    );
+};
 
 export const Map = ({ position, zoom, geoData }) => {
     return (
@@ -28,7 +32,7 @@ export const Map = ({ position, zoom, geoData }) => {
                                     { data[0].title } <br/>
                                     { data[0].time } <br/>
                                     Depth: { data[0].depth } <br/>
-                                    { ReactHtmlParser(composeHyperlink(data[0].detail, 'More Detail')) }
+                                    { composeHyperlink(data[0].detail, 'More Detail') }
                                 </Popup>
                             </CircleMarker>
                         )

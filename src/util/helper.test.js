@@ -19,15 +19,6 @@ describe('helper', () => {
         });
     });
 
-    describe('composeHyperlink', () => {
-        it('should return composed hyper link if `link` and `text` are provided', () => {
-            const actual = composeHyperlink('foo', 'bar');
-
-            const expected = '<a href=foo target=\'_blank\' rel=\'noopener noreferrer\'>bar</a>';
-            expect(actual).toBe(expected);
-        });
-    });
-
     describe('getPropertyList', () => {
         it('should return property array if `data` is provided', () => {
             const data = [
